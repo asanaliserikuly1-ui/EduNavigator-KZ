@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Science+Gothic:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+    .hero {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 80px 10%;
+        min-height: 60vh;
+        background: #f8fafc;
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif;
+    }
+
+    .hero-text {
+        max-width: 500px;
+    }
+
+    .hero h1 {
+        font-family: "Science Gothic", sans-serif;
+        font-size: 42px;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        margin-bottom: 20px;
+        background: linear-gradient(120deg, #0071e3, #4c82ff);
+        -webkit-background-clip: text;
+        color: transparent;
+    }
+
+    .hero p {
+        font-size: 18px;
+        color: #111;
+        line-height: 1.45;
+        margin-bottom: 30px;
+    }
+
+    .hero-buttons {
+        display: flex;
+        gap: 12px;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        padding: 12px 22px;
+        border-radius: 30px;
+        font-size: 15px;
+        font-weight: 500;
+        text-decoration: none;
+        transition: 0.2s ease;
+    }
+
+    .btn-primary {
+        background: #0071e3;
+        color: #fff;
+        box-shadow: 0 8px 25px rgba(0, 113, 227, 0.4);
+    }
+
+    .btn-primary:hover {
+        background: #005bbf;
+        box-shadow: 0 12px 30px rgba(0, 113, 227, 0.55);
+    }
+
+    .btn-secondary {
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        color: #000;
+    }
+
+    .btn-secondary:hover {
+        background: rgba(0, 0, 0, 0.06);
+    }
+
+    .hero-logo img {
+        width: 450px;
+        max-width: 45vw;
+        filter: drop-shadow(0 15px 40px rgba(0, 0, 0, 0.25));
+        animation: fadeUp 1.2s ease forwards;
+        opacity: 0;
+    }
+
+    @keyframes fadeUp {
+        0% {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+
+
+
+        /* Section background */
+#searchSection {
+    padding: 70px 0;
+    background: #f8f8f9;
+}
+
+/* Content container */
+.container {
+    max-width: 1100px;
+    margin: auto;
+    text-align: center;
+}
+
+/* Titles */
+.search-title {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.search-subtitle {
+    color: #888;
+    font-size: 18px;
+    margin-bottom: 40px;
+}
+
+/* Search controls */
+.search-controls {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+/* Inputs */
+.input {
+    padding: 14px 18px;
+    border-radius: 14px;
+    width: 280px;
+    border: 1px solid #ddd;
+    outline: none;
+    font-size: 16px;
+    background: #fff;
+    transition: .2s;
+}
+
+.input:hover,
+.input:focus {
+    border-color: #aaa;
+}
+
+/* Result info */
+.result-info {
+    font-size: 18px;
+    color: #555;
+    margin-top: 10px;
+}
+
+/* Grid */
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 24px;
+    margin-top: 30px;
+}
+
+/* Cards */
+.card {
+    background: #fff;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    transition: 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+}
+
+/* Card image */
+.card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+}
+
+/* Card content */
+.card-content {
+    padding: 18px;
+    text-align: left;
+}
+
+.card-title {
+    margin: 0 0 8px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.card-city {
+    margin: 0 0 8px;
+    font-size: 14px;
+    color: #888;
+}
+
+.card-desc {
+    margin: 0;
+    color: #555;
+    font-size: 14px;
+    line-height: 1.4;
+}
+</style>
+</head>
+<body>
+
+<header class="top-header">
+    <div class="container">
+        <div class="logo-block">
+            <img src="https://i.ibb.co.com/rR2cCbV9/eduu.png" alt="Logo">
+        </div>
+
+<nav class="menu">
+    <a href="/" data-page="home">Главная</a>
+    <a href="/universities" data-page="universities">Университеты</a>
+    <a href="/compare" data-page="compare">Сравнение</a>
+    <a href="/3d" data-page="tours_3d">3D-Туры</a>
+    <a href="/international" data-page="intl">Международные программы</a>
+    <a href="/about" data-page="about">О сервисе</a>
+</nav>
+
+<div class="lang-switch">
+    <button id="lang-btn">RU ▼</button>
+
+    <div class="lang-menu">
+        <div data-lang="ru">Русский</div>
+        <div data-lang="kz">Қазақша</div>
+        <div data-lang="en">English</div>
+    </div>
+</div>
+
+    </div>
+</header>
+
+<section class="hero">
+    <div class="hero-text">
+        <h1>Edu Navigator KZ</h1>
+        <p>
+            Наша миссия — сделать поступление прозрачным и удобным.<br><br>
+            Edu Navigator KZ — простой и понятный путь к выбору университета:
+            сравнивай, изучай, выбирай и поступай туда, где начнётся твоё будущее.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="/universities" class="btn-primary">Начать выбор →</a>
+            <a href="/3d" class="btn-secondary">3D-тур кампуса</a>
+        </div>
+    </div>
+
+    <div class="hero-logo">
+        <img src="https://i.ibb.co.com/rR2cCbV9/eduu.png" alt="Edu Navigator KZ">
+    </div>
+</section>
+
+<section class="search-section">
+    <div class="container">
+        <h2>🔍 Найди свой университет</h2>
+        <p class="subtext">Введите название или выберите город — мы покажем лучшие варианты.</p>
+
+        <div class="search-ui">
+            <input id="searchInput" placeholder="Поиск по названию..." oninput="searchUniversities()">
+
+            <select id="citySelect" onchange="searchUniversities()">
+                <option value="">Все города</option>
+                <option value="almaty">Almaty</option>
+                <option value="astana">Astana</option>
+                <option value="kaskelen">Kaskelen</option>
+                <option value="shymkent">Shymkent</option>
+            </select>
+
+            <!-- New Search button -->
+            <button id="searchBtn" onclick="searchUniversities()">Search</button>
+        </div>
+
+        <p id="resultInfo" class="result-info"></p>
+
+        <div id="resultsGrid" class="grid"></div>
+    </div>
+</section>
+
+    <script src="../static/script.js"></script>
+</body>
+</html>

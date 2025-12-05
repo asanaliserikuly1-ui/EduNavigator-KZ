@@ -1,0 +1,123 @@
+body{
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.top-header {
+    background: white;
+    border-radius: 20px;
+    padding: 10px 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo-block img {
+    height: 42px;
+    margin-right: 16px;
+    object-fit: contain;
+    display: block;
+}
+
+.menu a {
+    font-family: "Oswald", sans-serif;
+    position: relative;
+    text-decoration: none;
+    margin: 0 12px;
+    color: #1f2933;
+    font-size: 14px;
+    padding: 12px 4px;
+    transition: color 0.2s ease;
+}
+
+
+.menu a {
+    position: relative;
+    text-decoration: none;
+    padding: 10px 4px;
+    font-size: 14px;
+    color: #1f2933;
+    transition: color 0.2s ease;
+    display: inline-block;
+}
+
+.menu a.active {
+    color: #2563eb;
+    font-weight: 500;
+}
+
+.menu a.active::after {
+    content: "";
+    position: absolute;
+    height: 3px;
+    background: #2563eb;
+    width: 100%;
+    left: 0;
+    bottom: -4px;
+    border-radius: 6px;
+    transition: width 0.2s ease;
+}
+
+.menu {
+    margin-left: auto;
+    display: flex;
+    gap: 6px;
+}
+
+.lang-switch {
+    position: relative;
+}
+
+.lang-switch button {
+    background: transparent;
+    border: none;
+    font-size: 15px;
+    color: #111;
+    cursor: pointer;
+    padding: 8px 10px;
+    font-weight: 450;
+    border-radius: 10px;
+    transition: background .25s ease;
+}
+
+.lang-switch button:hover {
+    background: rgba(0,0,0,0.05);
+}
+
+.lang-menu {
+    position: absolute;
+    right: 0;
+    top: 36px;
+    background: rgba(255,255,255,0.94);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+    display: none;
+    overflow: hidden;
+}
+
+.lang-menu div {
+    padding: 12px 14px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.lang-menu div:hover {
+    background: rgba(0,0,0,0.06);
+}
+
+
+
+
+
+
