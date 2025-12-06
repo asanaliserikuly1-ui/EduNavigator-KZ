@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="../static/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Science+Gothic:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <style>
     .hero {
         display: flex;
@@ -95,116 +96,170 @@
 
 
 
-
-        /* Section background */
-#searchSection {
-    padding: 70px 0;
-    background: #f8f8f9;
-}
-
-/* Content container */
-.container {
-    max-width: 1100px;
-    margin: auto;
+.how-it-works-carousel {
+    padding: 100px 0;
     text-align: center;
+    background: #f8f9fb;
 }
 
-/* Titles */
-.search-title {
-    font-size: 32px;
+.how-it-works-carousel h2 {
+    font-family: "Science Gothic", sans-serif;
+    font-size: 42px;
     font-weight: 600;
+    letter-spacing: -0.5px;
+    margin-bottom: 180px;
+    color: #1a1a1a;
+}
+
+/* Wrapper */
+.carousel-wrapper {
+    position: relative;
+    max-width: 1100px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 0 80px;
+}
+
+/* Track */
+.carousel-track {
+    display: flex;
+    gap: 40px;
+    transition: transform 0.6s cubic-bezier(.4,0,.2,1);
+    will-change: transform;
+}
+
+/* Step Card — Figma style */
+.step-card {
+    flex: 0 0 300px;
+    background: white;
+    border-radius: 28px;
+    padding: 26px;
+    text-align: left;
+    box-shadow: 0px 12px 35px rgba(17, 23, 41, 0.08);
+    transition: transform .25s ease, box-shadow .25s ease;
+    cursor: pointer;
+}
+
+.step-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0px 18px 45px rgba(17, 23, 41, 0.12);
+}
+
+/* Image */
+.step-card img {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    border-radius: 20px;
     margin-bottom: 20px;
 }
 
-.search-subtitle {
-    color: #888;
-    font-size: 18px;
-    margin-bottom: 40px;
-}
-
-/* Search controls */
-.search-controls {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    margin-bottom: 30px;
-}
-
-/* Inputs */
-.input {
-    padding: 14px 18px;
-    border-radius: 14px;
-    width: 280px;
-    border: 1px solid #ddd;
-    outline: none;
-    font-size: 16px;
-    background: #fff;
-    transition: .2s;
-}
-
-.input:hover,
-.input:focus {
-    border-color: #aaa;
-}
-
-/* Result info */
-.result-info {
-    font-size: 18px;
-    color: #555;
-    margin-top: 10px;
-}
-
-/* Grid */
-.results-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 24px;
-    margin-top: 30px;
-}
-
-/* Cards */
-.card {
-    background: #fff;
-    border-radius: 18px;
-    overflow: hidden;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-    transition: 0.2s;
-}
-
-.card:hover {
-    transform: translateY(-4px);
-}
-
-/* Card image */
-.card img {
-    width: 100%;
-    height: 160px;
-    object-fit: cover;
-}
-
-/* Card content */
-.card-content {
-    padding: 18px;
-    text-align: left;
-}
-
-.card-title {
-    margin: 0 0 8px;
-    font-size: 18px;
+/* Text styling */
+.step-card h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
     font-weight: 600;
+    color: #1b1b1b;
+    margin-bottom: 6px;
 }
 
-.card-city {
-    margin: 0 0 8px;
-    font-size: 14px;
-    color: #888;
+.step-card p {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 15px;
+    line-height: 1.45;
+    color: #6f7582;
 }
 
-.card-desc {
-    margin: 0;
-    color: #555;
-    font-size: 14px;
-    line-height: 1.4;
+/* Figma style arrows */
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(245,245,245,0.8);
+    backdrop-filter: blur(8px);
+    border-radius: 18px;
+    font-size: 20px;
+    font-weight: 600;
+    border: 1px solid rgba(0,0,0,0.08);
+    color: #30343a;
+    cursor: pointer;
+    z-index: 20;
+    transition: 0.25s ease;
+}
+
+.arrow:hover {
+    background: rgba(240,240,240,0.95);
+    transform: translateY(-50%) scale(1.06);
+}
+
+.left {
+    left: 10px;
+}
+
+.right {
+    right: 10px;
+}
+
+/* Mobile behavior */
+@media (max-width: 768px) {
+    .carousel-wrapper {
+        padding: 0;
+    }
+    .arrow {
+        display: none;
+    }
+    .carousel-track {
+        gap: 24px;
+    }
+    .step-card {
+        flex: 0 0 85%;
+        border-radius: 20px;
+    }
+}
+
+
+.typing-section {
+    position: relative;
+    padding: 120px 12%;
+    background: #f7faff;
+    font-family: 'Bebas Neue', sans-serif;
+    overflow: hidden;
+}
+
+.typing-section h2 {
+    font-family: "Science Gothic", sans-serif;
+    font-size: 42px;
+    font-weight: 600;
+    margin-bottom: 40px;
+    background: linear-gradient(120deg, #0071e3, #4c82ff);
+    -webkit-background-clip: text;
+    color: 6600CC;
+}
+
+#typing-text {
+    font-size: 22px;
+    max-width: 740px;
+    line-height: 1.6;
+    color: #111;
+    opacity: 0.9;
+    border-right: 2px solid #0071e3;
+    overflow: hidden;
+    display: inline-block;
+    white-space: normal; /* ключевой фикс */
+}
+
+        @keyframes blink {
+    0% { border-right-color: transparent; }
+    50% { border-right-color: #0071e3; }
+    100% { border-right-color: transparent; }
+}
+
+#typing-text {
+    animation: blink .8s infinite;
 }
 </style>
 </head>
@@ -217,12 +272,12 @@
         </div>
 
 <nav class="menu">
-    <a href="/" data-page="home">Главная</a>
-    <a href="/universities" data-page="universities">Университеты</a>
-    <a href="/compare" data-page="compare">Сравнение</a>
-    <a href="/3d" data-page="tours_3d">3D-Туры</a>
-    <a href="/international" data-page="intl">Международные программы</a>
-    <a href="/about" data-page="about">О сервисе</a>
+<a href="/" class="nav-link" data-page="home">Главная</a>
+<a href="/universities" class="nav-link" data-page="universities">Университеты</a>
+<a href="/compare" class="nav-link" data-page="compare">Сравнение</a>
+<a href="/3d" class="nav-link" data-page="3d">3D Тур</a>
+<a href="/international" class="nav-link" data-page="international">Международные программы</a>
+<a href="/about" class="nav-link" data-page="about">Приемная комиссия</a>
 </nav>
 
 <div class="lang-switch">
@@ -258,31 +313,111 @@
     </div>
 </section>
 
-<section class="search-section">
-    <div class="container">
-        <h2>🔍 Найди свой университет</h2>
-        <p class="subtext">Введите название или выберите город — мы покажем лучшие варианты.</p>
+<section class="how-it-works-carousel">
+    <h2>Как это работает?</h2>
 
-        <div class="search-ui">
-            <input id="searchInput" placeholder="Поиск по названию..." oninput="searchUniversities()">
+    <div class="carousel-wrapper">
+        <button class="arrow left">&#10094;</button>
 
-            <select id="citySelect" onchange="searchUniversities()">
-                <option value="">Все города</option>
-                <option value="almaty">Almaty</option>
-                <option value="astana">Astana</option>
-                <option value="kaskelen">Kaskelen</option>
-                <option value="shymkent">Shymkent</option>
-            </select>
+        <div class="carousel-track">
 
-            <!-- New Search button -->
-            <button id="searchBtn" onclick="searchUniversities()">Search</button>
+            <div class="step-card">
+                <img src="https://www.oecd-nea.org/upload/docs/image/jpeg/2025-02/web_visual_-_2025_ai_platform_for_nuclear_research_and_education_v1.jpg" alt="Университет КБТУ">
+                <h3>Выбирай университет</h3>
+                <p>Сравнивай вузы с помощью AI.</p>
+            </div>
+
+            <div class="step-card">
+                <img src="https://blog.flexyheat.ru/wp-content/uploads/2016/09/stours-1.jpg" alt="Кампус IITU">
+                <h3>Изучай кампус</h3>
+                <p>Исследуй кампусы через 3D-тур прямо на сайте.</p>
+            </div>
+
+            <div class="step-card">
+                <img src="https://api.buki-kz.com/news_image/RC/q1/RCq1ot3xiWcb9HwiDxK1078axAC75Y61roHdHnwS.jpg" alt="Поступление">
+                <h3>Узнавай условия поступления</h3>
+                <p>Проходные баллы, сроки, документы — всё в одном месте.</p>
+            </div>
+
+            <div class="step-card">
+                <img src="https://img.freepik.com/free-photo/young-adult-organizing-documents_23-2149396633.jpg?semt=ais_se_enriched&w=740&q=80" alt="Документы">
+                <h3>Подготавливай документы</h3>
+                <p>Сохраняй, загружай и оформляй заявку онлайн.</p>
+            </div>
+
+            <div class="step-card">
+                <img src="https://static.tildacdn.com/tild6164-3361-4732-b131-656139376336/mini_adobestock_4989.jpeg" alt="Поступление">
+                <h3>Поступай</h3>
+                <p>Отправляй заявку и начинай свой путь в высшем образовании.</p>
+            </div>
+
         </div>
 
-        <p id="resultInfo" class="result-info"></p>
-
-        <div id="resultsGrid" class="grid"></div>
+        <button class="arrow right">&#10095;</button>
     </div>
 </section>
+
+<section class="importance typing-section reveal">
+    <h2>Почему это важно?</h2>
+    <p id="typing-text"></p>
+</section>
+
+<footer class="site-footer">
+    <div class="footer-inner">
+        <div class="footer-main">
+            <div class="footer-brand">
+                <img src="https://i.ibb.co.com/rR2cCbV9/eduu.png" alt="Edu Navigator KZ">
+                <p>
+                    Помогаем абитуриентам спокойно и осознанно выбрать университет,
+                    не теряясь в десятках вкладок и сложных сайтах.
+                </p>
+            </div>
+
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <h4>Навигация</h4>
+                    <a href="/">Главная</a>
+                    <a href="/universities">Университеты</a>
+                    <a href="/compare">Сравнение</a>
+                    <a href="/3d">3D-тур</a>
+                    <a href="/international">Международные программы</a>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Абитуриенту</h4>
+                    <a href="/about">Приемная комиссия</a>
+                    <a href="#">Частые вопросы</a>
+                    <a href="#">Гайд по поступлению</a>
+                    <a href="#">Советы по выбору вуза</a>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Контакты</h4>
+                    <a href="mailto:support@edunavigator.kz">support@edunavigator.kz</a>
+                    <a href="#">Поддержка в Telegram</a>
+
+                    <div class="footer-social">
+                        <span>Мы в соцсетях</span>
+                        <div class="footer-social-links">
+                            <a href="#">TG</a>
+                            <a href="#">VK</a>
+                            <a href="#">IG</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>© 2025 Edu Navigator KZ</span>
+            <div class="footer-bottom-links">
+                <a href="#">Политика конфиденциальности</a>
+                <span>·</span>
+                <a href="#">Пользовательское соглашение</a>
+            </div>
+        </div>
+    </div>
+</footer>
 
     <script src="../static/script.js"></script>
 </body>

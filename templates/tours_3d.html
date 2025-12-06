@@ -1,41 +1,140 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="../static/style.css">
+    <title>3D Туры университетов</title>
+
+    <!-- Correct static -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+
+    <style>
+        .tour-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            padding: 40px 10px;
+        }
+
+        .tour-card {
+            background: white;
+            padding: 18px;
+            border-radius: 14px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+            transition: 0.2s;
+            font-family: "Oswald", sans-serif;
+            font-size: 20px;
+            text-decoration: none;
+            color: #111;
+        }
+
+        .tour-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 14px rgba(0,0,0,0.13);
+        }
+    </style>
 </head>
 <body>
 
 <header class="top-header">
     <div class="container">
         <div class="logo-block">
-            <img src="https://i.ibb.co.com/rR2cCbV9/eduu.png" alt="Logo">
+            <img src="https://i.ibb.co/rR2cCbV9/eduu.png" alt="Logo">
         </div>
 
-<nav class="menu">
-    <a href="/" data-page="home">Главная</a>
-    <a href="/universities" data-page="universities">Университеты</a>
-    <a href="/compare" data-page="compare">Сравнение</a>
-    <a href="/3d" data-page="tours_3d">3D-Туры</a>
-    <a href="/international" data-page="intl">Международные программы</a>
-    <a href="/about" data-page="about">О сервисе</a>
-</nav>
+        <nav class="menu">
+            <a href="/" class="nav-link" data-page="home">Главная</a>
+            <a href="/universities" class="nav-link" data-page="universities">Университеты</a>
+            <a href="/compare" class="nav-link" data-page="compare">Сравнение</a>
+            <a href="/3d" class="nav-link" data-page="3d">3D Тур</a>
+            <a href="/international" class="nav-link" data-page="international">Международные программы</a>
+            <a href="/about" class="nav-link" data-page="about">Приемная комиссия</a>
+        </nav>
 
-<div class="lang-switch">
-    <button id="lang-btn">RU ▼</button>
+        <div class="lang-switch">
+            <button id="lang-btn">RU ▼</button>
 
-    <div class="lang-menu">
-        <div data-lang="ru">Русский</div>
-        <div data-lang="kz">Қазақша</div>
-        <div data-lang="en">English</div>
-    </div>
-</div>
-
+            <div class="lang-menu">
+                <div data-lang="ru">Русский</div>
+                <div data-lang="kz">Қазақша</div>
+                <div data-lang="en">English</div>
+            </div>
+        </div>
     </div>
 </header>
 
-    <script src="../static/script.js"></script>
+<main class="content">
+    <h1 style="text-align:center; margin-top:40px;">Выберите университет для 3D тура</h1>
+
+    <div class="tour-grid">
+
+        <a class="tour-card" href="/tour/kbtu">KBTU</a>
+        <a class="tour-card" href="/tour/sdu">SDU</a>
+        <a class="tour-card" href="/tour/aitu">AITU</a>
+        <a class="tour-card" href="/tour/iitu">IITU (MUIT)</a>
+
+    </div>
+</main>
+
+<footer class="site-footer">
+    <div class="footer-inner">
+        <div class="footer-main">
+            <div class="footer-brand">
+                <img src="https://i.ibb.co/rR2cCbV9/eduu.png" alt="Edu Navigator KZ">
+                <p>
+                    Помогаем абитуриентам спокойно и осознанно выбрать университет,
+                    не теряясь в десятках вкладок и сложных сайтах.
+                </p>
+            </div>
+
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <h4>Навигация</h4>
+                    <a href="/">Главная</a>
+                    <a href="/universities">Университеты</a>
+                    <a href="/compare">Сравнение</a>
+                    <a href="/3d">3D-тур</a>
+                    <a href="/international">Международные программы</a>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Абитуриенту</h4>
+                    <a href="/about">Приемная комиссия</a>
+                    <a href="#">Частые вопросы</a>
+                    <a href="#">Гайд по поступлению</a>
+                    <a href="#">Советы по выбору вуза</a>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Контакты</h4>
+                    <a href="mailto:support@edunavigator.kz">support@edunavigator.kz</a>
+                    <a href="#">Поддержка в Telegram</a>
+
+                    <div class="footer-social">
+                        <span>Мы в соцсетях</span>
+                        <div class="footer-social-links">
+                            <a href="#">TG</a>
+                            <a href="#">VK</a>
+                            <a href="#">IG</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>© 2025 Edu Navigator KZ</span>
+            <div class="footer-bottom-links">
+                <a href="#">Политика конфиденциальности</a>
+                <span>·</span>
+                <a href="#">Пользовательское соглашение</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
 </body>
 </html>

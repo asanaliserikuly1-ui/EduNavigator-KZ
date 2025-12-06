@@ -1,10 +1,436 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="../static/style.css">
+    <title>Edu Navigator KZ</title>
+    <link rel="stylesheet" href="/static/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Science+Gothic:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+/* ===========================================================
+   GLOBAL RESET & APPLE UI BASE STYLE
+   =========================================================== */
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+                 "SF Pro Text", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background: #f9fafc;
+    color: #1c1c1e;
+    line-height: 1.4;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ===========================================================
+   CONTAINER
+   =========================================================== */
+
+.compare-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 40px 20px 80px;
+}
+
+/* ===========================================================
+   TYPOGRAPHY
+   =========================================================== */
+
+h1 {
+    font-family: "Science Gothic", sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    text-align: center;
+    letter-spacing: -0.5px;
+}
+
+p {
+    font-family: 'Bebas Neue', sans-serif;
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 40px;
+    color: #555;
+}
+
+/* ===========================================================
+   GRID STRUCTURE — макет как в iOS показах карточек
+   =========================================================== */
+
+.compare-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 50px;
+    font-family: 'Bebas Neue', sans-serif;
+}
+
+/* Light glass card look */
+.uni-column,
+.compare-middle {
+    flex: 1;
+    padding: 26px;
+    background: rgba(255,255,255,0.78);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 22px;
+    box-shadow: 0 8px 26px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid rgba(255,255,255,0.5);
+    transition: 0.3s ease;
+}
+
+/* Subtle hover lift */
+.uni-column:hover,
+.compare-middle:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+}
+
+/* ===========================================================
+   IMAGE SECTION
+   =========================================================== */
+
+.uni-image-wrapper {
+    width: 200px;
+    height: 140px;
+    border-radius: 18px;
+    overflow: hidden;
+    margin: 12px 0 14px;
+    background: #f2f2f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(200,200,200,0.45);
+    box-shadow: inset 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.uni-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ===========================================================
+   TEXT SECTION — SF Pro Text inspired
+   =========================================================== */
+
+.uni-name-line span {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+    color: #1c1c1e;
+}
+
+.uni-meta {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 14px;
+    color: #8e8e93;
+    margin-bottom: 14px;
+}
+
+/* ===========================================================
+   ARROWS — iOS control buttons
+   =========================================================== */
+
+.arrow-top button,
+.arrow-bottom button {
+    font-family: 'Bebas Neue', sans-serif;
+    background: rgba(0,122,255,0.12);
+    border: none;
+    font-size: 18px;
+    padding: 6px 16px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.2s;
+    font-weight: 500;
+    color: #007aff;
+}
+
+.arrow-top button:hover,
+.arrow-bottom button:hover {
+    background: rgba(0,122,255,0.20);
+}
+
+/* ===========================================================
+   SEARCH BLOCK — Cupertino field aesthetic
+   =========================================================== */
+
+.search-box {
+    display: flex;
+    width: 100%;
+    margin-top: 12px;
+    gap: 8px;
+}
+
+.search-box input {
+    flex: 1;
+    padding: 12px 16px;
+    border-radius: 14px;
+    border: 1px solid rgba(200,200,200,0.55);
+    background: rgba(255,255,255,0.82);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+
+    font-size: 15px;
+    transition: 0.25s;
+    box-shadow: inset 0 2px 6px rgba(0,0,0,0.04);
+    color: #111;
+}
+
+.search-box input:focus {
+    border-color: #007aff;
+    box-shadow: 0 0 0 3px rgba(0,122,255,0.22),
+                inset 0 2px 6px rgba(0,0,0,0.05);
+    outline: none;
+}
+
+.search-box button {
+    background: #007aff;
+    color: white;
+    border: none;
+    border-radius: 14px;
+    padding: 12px 16px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.25s;
+    box-shadow: 0 4px 12px rgba(0,122,255,0.25);
+}
+
+.search-box button:hover {
+    background: #005ecb;
+    box-shadow: 0 6px 16px rgba(0,122,255,0.35);
+}
+
+small {
+    margin-top: 4px;
+    font-size: 12px;
+    color: #8e8e93;
+}
+
+/* ===========================================================
+   COMPARE BUTTON — Apple CTA look
+   =========================================================== */
+
+.center-arrows {
+    font-size: 22px;
+    color: #c7c7cc;
+    margin: 12px 0;
+}
+
+.compare-button {
+    background: linear-gradient(180deg, #007aff, #006de6);
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 16px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.25s;
+    box-shadow: 0 8px 20px rgba(0,122,255,0.28);
+}
+
+.compare-button:hover {
+    background: linear-gradient(180deg, #006de6, #005ecb);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 26px rgba(0,122,255,0.36);
+}
+
+#compare-status {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #8e8e93;
+}
+/* ===========================================================
+   GOAL INPUT
+   =========================================================== */
+
+.goal-block {
+    width: 100%;
+    text-align: center;
+    margin-top: 24px;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", Helvetica, Arial, sans-serif;
+}
+
+/* Apple glass input style */
+.goal-block input {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 14px;
+
+    background: rgba(255,255,255,0.75);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    border: 1px solid rgba(200,200,200,0.6);
+
+    font-size: 15px;
+    letter-spacing: -0.2px;
+    color: #111;
+
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    transition: 0.25s ease;
+}
+
+/* Focus — iOS glowing blue */
+.goal-block input:focus {
+    border-color: #007aff;
+    box-shadow: 0 0 0 3px rgba(0,122,255,0.25),
+                0 3px 14px rgba(0,0,0,0.06);
+    outline: none;
+}
+
+/* Placeholder soft Apple style */
+.goal-block input::placeholder {
+    color: rgba(60,60,67,0.35);
+    font-weight: 400;
+}
+
+/* Hover — slightly rising */
+.goal-block input:hover {
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+}
+
+/* ===========================================================
+   AI OUTPUT BOX
+   =========================================================== */
+
+.ai-output-section {
+    font-family: "Science Gothic", sans-serif;
+    margin-top: 80px;
+    width: 100%;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", Helvetica, Arial, sans-serif;
+}
+
+.ai-output-section h2 {
+    font-family: "Science Gothic", sans-serif;
+    font-size: 32px;
+    font-weight: 650;
+    margin-bottom: 28px;
+    letter-spacing: -0.6px;
+    color: #0f0f0f;
+    text-align: left;
+    max-width: 850px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Card display */
+.ai-output-box {
+    font-family: 'Bebas Neue', sans-serif;
+    max-width: 850px;
+    margin: 0 auto;
+
+    padding: 26px 32px;
+    min-height: 140px;
+
+    background: rgba(255, 255, 255, 0.82);
+    border-radius: 22px;
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+
+    box-shadow: 0 10px 28px rgba(0,0,0,0.06);
+
+    font-size: 17px;
+    color: #1d1d1f;
+    text-align: left;
+    line-height: 1.78;
+
+    border: 1px solid rgba(255,255,255,0.5);
+    transition: box-shadow 0.25s ease, transform 0.25s ease;
+
+    overflow-y: auto;
+    max-height: 340px;
+}
+
+/* Hover lift */
+.ai-output-box:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 36px rgba(0,0,0,0.12);
+}
+
+/* Custom scrollbar */
+.ai-output-box::-webkit-scrollbar {
+    width: 6px;
+}
+
+.ai-output-box::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0.18);
+    border-radius: 10px;
+}
+
+/* ===========================================================
+   BUTTON STATES
+   =========================================================== */
+
+button:disabled {
+    background: #ccc !important;
+    cursor: not-allowed;
+    box-shadow: none !important;
+}
+
+/* ===========================================================
+   APPLE–STYLE ANIMATIONS
+   =========================================================== */
+
+.uni-column,
+.compare-middle,
+.ai-output-box,
+.uni-image-wrapper {
+    transition: all 0.25s ease;
+}
+
+.uni-column:hover,
+.compare-middle:hover {
+    box-shadow: 0px 6px 22px rgba(0,0,0,0.09);
+}
+
+.uni-image-wrapper:hover img {
+    transform: scale(1.02);
+}
+
+/* ===========================================================
+   RESPONSIVE — MOBILE OPTIMIZED LAYOUT
+   =========================================================== */
+
+@media (max-width: 1024px) {
+    .compare-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+    .compare-middle {
+        order: 3;
+        width: 100%;
+        margin-top: 20px;
+    }
+    .uni-column {
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    h1 { font-size: 32px; }
+    .compare-button { width: 100%; }
+    .goal-block input { font-size: 13px; }
+    .uni-img { height: 120px; }
+}
+    </style>
 </head>
 <body>
 
@@ -14,28 +440,332 @@
             <img src="https://i.ibb.co.com/rR2cCbV9/eduu.png" alt="Logo">
         </div>
 
-<nav class="menu">
-    <a href="/" data-page="home">Главная</a>
-    <a href="/universities" data-page="universities">Университеты</a>
-    <a href="/compare" data-page="compare">Сравнение</a>
-    <a href="/3d" data-page="tours_3d">3D-Туры</a>
-    <a href="/international" data-page="intl">Международные программы</a>
-    <a href="/about" data-page="about">О сервисе</a>
-</nav>
-
-<div class="lang-switch">
-    <button id="lang-btn">RU ▼</button>
-
-    <div class="lang-menu">
-        <div data-lang="ru">Русский</div>
-        <div data-lang="kz">Қазақша</div>
-        <div data-lang="en">English</div>
-    </div>
-</div>
-
+        <nav class="menu">
+            <a href="/" class="nav-link">Главная</a>
+            <a href="/universities" class="nav-link">Университеты</a>
+            <a href="/compare" class="nav-link active">Сравнение</a>
+            <a href="/3d" class="nav-link">3D Тур</a>
+            <a href="/international" class="nav-link">Международные программы</a>
+            <a href="/about" class="nav-link">Приемная комиссия</a>
+        </nav>
     </div>
 </header>
 
-    <script src="../static/script.js"></script>
+<main class="compare-section">
+    <div class="compare-container">
+
+        <!-- Заголовок страницы -->
+        <h1>Интеллектуальное сравнение университетов</h1>
+        <p>Выберите два учебных заведения — система ИИ проанализирует их и предложит наиболее подходящий вариант.</p>
+
+        <!-- Основная зона сравнения -->
+        <div class="compare-grid">
+
+            <!-- ЛЕВАЯ КОЛОНКА -->
+            <div class="uni-column uni-column-left">
+
+                <!-- Стрелка вверх -->
+                <div class="arrow-top">
+                    <button id="left-up">▲</button>
+                </div>
+
+                <!-- Картинка университета -->
+                <div class="uni-image-wrapper">
+                    <img id="left-image" class="uni-img" src="/static/default.png" alt="Университет">
+                </div>
+
+                <!-- Название -->
+                <div class="uni-name-line">
+                    <span id="left-name">—</span>
+                </div>
+
+                <!-- Доп. инфо: город, рейтинг -->
+                <div id="left-meta" class="uni-meta"></div>
+
+                <!-- Стрелка вниз -->
+                <div class="arrow-bottom">
+                    <button id="left-down">▼</button>
+                </div>
+
+                <!-- Поиск по базе -->
+                <div class="search-box">
+                    <input id="left-search" type="text" placeholder="Найти университет…">
+                    <button id="left-search-btn">🔍</button>
+                </div>
+                <small id="left-search-hint"></small>
+            </div>
+
+            <!-- ЦЕНТРАЛЬНЫЙ БЛОК -->
+            <div class="compare-middle">
+
+                <!-- Декоративные стрелки -->
+                <div class="center-arrows">
+                    &laquo;&laquo;&laquo;
+                </div>
+
+                <!-- Кнопка сравнения -->
+                <button id="compare-btn" class="compare-button">Сравнить</button>
+
+                <!-- Декоративные стрелки справа -->
+                <div class="center-arrows">
+                    &raquo;&raquo;&raquo;
+                </div>
+
+                <!-- Статус вычисления -->
+                <p id="compare-status"></p>
+
+                <!-- Цель пользователя -->
+                <div class="goal-block">
+                    <label for="goal-input">Ваш приоритет (необязательно):</label>
+                    <input id="goal-input" type="text" placeholder="Найти университет…">
+                </div>
+            </div>
+
+            <!-- ПРАВАЯ КОЛОНКА -->
+            <div class="uni-column uni-column-right">
+
+                <!-- Стрелка вверх -->
+                <div class="arrow-top">
+                    <button id="right-up">▲</button>
+                </div>
+
+                <!-- Картинка университета -->
+                <div class="uni-image-wrapper">
+                    <img id="right-image" class="uni-img" src="/static/default.png" alt="Университет">
+                </div>
+
+                <!-- Название -->
+                <div class="uni-name-line">
+                    <span id="right-name">—</span>
+                </div>
+
+                <!-- Доп. инфо: город, рейтинг -->
+                <div id="right-meta" class="uni-meta"></div>
+
+                <!-- Стрелка вниз -->
+                <div class="arrow-bottom">
+                    <button id="right-down">▼</button>
+                </div>
+
+                <!-- Поиск -->
+                <div class="search-box">
+                    <input id="right-search" type="text" placeholder="Найти университет…">
+                    <button id="right-search-btn">🔍</button>
+                </div>
+                <small id="right-search-hint"></small>
+            </div>
+
+        </div>
+
+        <!-- БЛОК ВЫВОДА ИИ -->
+        <section class="ai-output-section">
+            <h2>Анализа ИИ</h2>
+            <div id="ai-output" class="ai-output-box">
+                Аналитический вывод системы сравнения.
+            </div>
+        </section>
+
+    </div>
+</main>
+
+<footer class="site-footer">
+    <div class="footer-inner">
+        <div class="footer-main">
+            <div class="footer-brand">
+                <img src="https://i.ibb.co.com/rR2cCbV9/eduu.png" alt="Edu Navigator KZ">
+                <p>
+                    Помогаем абитуриентам спокойно и осознанно выбрать университет,
+                    не теряясь в десятках вкладок и сложных сайтах.
+                </p>
+            </div>
+
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <h4>Навигация</h4>
+                    <a href="/">Главная</a>
+                    <a href="/universities">Университеты</a>
+                    <a href="/compare">Сравнение</a>
+                    <a href="/3d">3D-тур</a>
+                    <a href="/international">Международные программы</a>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Абитуриенту</h4>
+                    <a href="/about">Приемная комиссия</a>
+                    <a href="#">Частые вопросы</a>
+                    <a href="#">Гайд по поступлению</a>
+                    <a href="#">Советы по выбору вуза</a>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Контакты</h4>
+                    <a href="mailto:support@edunavigator.kz">support@edunavigator.kz</a>
+                    <a href="#">Поддержка в Telegram</a>
+
+                    <div class="footer-social">
+                        <span>Мы в соцсетях</span>
+                        <div class="footer-social-links">
+                            <a href="#">TG</a>
+                            <a href="#">VK</a>
+                            <a href="#">IG</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>© 2025 Edu Navigator KZ</span>
+            <div class="footer-bottom-links">
+                <a href="#">Политика конфиденциальности</a>
+                <span>·</span>
+                <a href="#">Пользовательское соглашение</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+let universities = [];
+let leftIndex = 0;
+let rightIndex = 1;
+let selectedLeftId = null;
+let selectedRightId = null;
+
+// Загрузка данных из API
+async function fetchUniversities() {
+    const res = await fetch('/api/universities');
+    universities = await res.json();
+
+    if (universities.length > 0) {
+        updateCards();
+    }
+}
+
+// Обновление UI карточек
+function updateCards() {
+    let leftUni = universities[leftIndex];
+    let rightUni = universities[rightIndex];
+
+    selectedLeftId = leftUni.id;
+    selectedRightId = rightUni.id;
+
+    document.getElementById("left-image").src = leftUni.image_url || "/static/default.png";
+    document.getElementById("left-name").innerText = leftUni.name;
+    document.getElementById("left-meta").innerText =
+        (leftUni.city ?? "") + (leftUni.rating ? " • рейтинг " + leftUni.rating.toFixed(1) : "");
+
+    document.getElementById("right-image").src = rightUni.image_url || "/static/default.png";
+    document.getElementById("right-name").innerText = rightUni.name;
+    document.getElementById("right-meta").innerText =
+        (rightUni.city ?? "") + (rightUni.rating ? " • рейтинг " + rightUni.rating.toFixed(1) : "");
+}
+
+function moveLeft(d) {
+    leftIndex = (leftIndex + d + universities.length) % universities.length;
+    if (leftIndex === rightIndex) {
+        rightIndex = (rightIndex + 1) % universities.length;
+    }
+    updateCards();
+}
+
+function moveRight(d) {
+    rightIndex = (rightIndex + d + universities.length) % universities.length;
+    if (rightIndex === leftIndex) {
+        leftIndex = (leftIndex + 1) % universities.length;
+    }
+    updateCards();
+}
+
+// Поиск
+async function handleSearch(side) {
+    let query = document.getElementById(side + "-search").value.trim();
+    let hint = document.getElementById(side + "-search-hint");
+
+    if (!query) {
+        hint.innerText = "Введите название";
+        return;
+    }
+
+    let res = await fetch("/api/search?q=" + encodeURIComponent(query));
+    let matches = await res.json();
+
+    if (!matches.length) {
+        hint.innerText = "Ничего не найдено";
+        return;
+    }
+
+    let uni = matches[0];
+    hint.innerText = "Выбран: " + uni.name;
+
+    if (side === "left") {
+        selectedLeftId = uni.id;
+        document.getElementById("left-image").src = uni.image_url || "/static/default.png";
+        document.getElementById("left-name").innerText = uni.name;
+        document.getElementById("left-meta").innerText =
+            (uni.city ?? "") + (uni.rating ? " • рейтинг " + uni.rating.toFixed(1) : "");
+    } else {
+        selectedRightId = uni.id;
+        document.getElementById("right-image").src = uni.image_url || "/static/default.png";
+        document.getElementById("right-name").innerText = uni.name;
+        document.getElementById("right-meta").innerText =
+            (uni.city ?? "") + (uni.rating ? " • рейтинг " + uni.rating.toFixed(1) : "");
+    }
+}
+
+// AI запрос
+async function compareAI() {
+    let status = document.getElementById("compare-status");
+    let output = document.getElementById("ai-output");
+
+    if (!selectedLeftId || !selectedRightId) {
+        status.innerText = "Выберите оба университета.";
+        return;
+    }
+
+    if (selectedLeftId === selectedRightId) {
+        status.innerText = "Вузы должны быть разными.";
+        return;
+    }
+
+    status.innerText = "ИИ анализирует...";
+    output.innerHTML = "Загрузка...";
+
+    let goal = document.getElementById("goal-input").value.trim();
+
+    let res = await fetch("/api/compare_ai", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({id1: selectedLeftId, id2: selectedRightId, goal})
+    });
+
+    let data = await res.json();
+
+    if (data.result) {
+        output.innerHTML = data.result.replace(/\n/g, "<br>");
+        status.innerText = "Готово ✔";
+    } else {
+        output.innerText = data.error;
+        status.innerText = "Ошибка";
+    }
+}
+
+// Инициализация
+document.addEventListener("DOMContentLoaded", () => {
+    fetchUniversities();
+
+    document.getElementById("left-up").onclick = () => moveLeft(-1);
+    document.getElementById("left-down").onclick = () => moveLeft(1);
+
+    document.getElementById("right-up").onclick = () => moveRight(-1);
+    document.getElementById("right-down").onclick = () => moveRight(1);
+
+    document.getElementById("left-search-btn").onclick = () => handleSearch("left");
+    document.getElementById("right-search-btn").onclick = () => handleSearch("right");
+
+    document.getElementById("compare-btn").onclick = compareAI;
+});
+</script>
+
 </body>
 </html>

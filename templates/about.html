@@ -3,39 +3,1762 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="../static/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <style>
+        /* HEADER */
+
+.top-header {
+    background: white;
+    border-radius: 20px;
+    padding: 10px 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo-block img {
+    height: 42px;
+    object-fit: contain;
+    display: block;
+}
+
+/* MENU */
+
+.menu {
+    display: flex;
+    gap: 2px;
+}
+
+.menu a {
+    font-family: "Oswald", sans-serif;
+    text-decoration: none;
+    padding: 10px 8px;
+    font-size: 14px;
+    color: #1f2933;
+    display: inline-block;
+    position: relative;
+    transition: color 0.3s;
+}
+
+.menu a:hover,
+.menu .active {
+    color: #2563eb;
+}
+
+.menu .active::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: #2563eb;
+    border-radius: 4px;
+}
+
+/* LANGUAGE DROPDOWN */
+
+.lang-switch {
+    position: relative;
+    margin-left: 8px;
+    margin-right: 1px;
+}
+
+.lang-switch button {
+    background: transparent;
+    border: none;
+    font-size: 15px;
+    cursor: pointer;
+    color: #111;
+    padding: 6px 10px;
+    border-radius: 8px;
+    transition: background 0.25s;
+}
+
+.lang-switch button:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.lang-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 36px;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(12px);
+    border-radius: 10px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+
+.lang-menu div {
+    padding: 10px 14px;
+    cursor: pointer;
+}
+
+.lang-menu div:hover {
+    background: rgba(0,0,0,0.06);
+}
+
+
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Навигация */
+        .main-nav {
+            background: white;
+            border-radius: 12px;
+            padding: 15px 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            padding: 12px 25px;
+            background: #f8f9fa;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #555;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .nav-btn:hover {
+            background: #e3f2fd;
+            border-color: #2196f3;
+            color: #1565c0;
+        }
+
+        .nav-btn.active {
+            background: #2196f3;
+            border-color: #1976d2;
+            color: white;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a237e;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Hero секция */
+        .hero {
+            padding: 60px 0;
+            text-align: center;
+            background: white;
+            margin-bottom: 40px;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            background: linear-gradient(135deg, #1a237e 0%, #3949ab 100%);
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        /* Основной контент */
+        .main-content {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        /* Боковая навигация */
+        .sidebar {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+
+        .sidebar-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .sidebar-link {
+            padding: 15px 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #555;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .sidebar-link:hover {
+            background: #e3f2fd;
+            color: #2196f3;
+            transform: translateX(5px);
+        }
+
+        .sidebar-link.active {
+            background: #2196f3;
+            color: white;
+        }
+
+        /* Секции контента */
+        .content-section {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: #1a237e;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #e8eaf6;
+        }
+
+        .section-subtitle {
+            font-size: 1.4rem;
+            color: #3949ab;
+            margin: 25px 0 15px;
+        }
+
+        /* Карточки */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 25px 0;
+        }
+
+        .card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 25px;
+            border-left: 4px solid #2196f3;
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(33, 150, 243, 0.15);
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #1a237e;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-content {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .card-icon {
+            font-size: 1.5rem;
+        }
+
+        /* Таблицы */
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .info-table th {
+            background: #2196f3;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .info-table td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .info-table tr:hover {
+            background: #f8f9fa;
+        }
+
+        /* Списки */
+        .requirements-list {
+            list-style: none;
+            padding-left: 20px;
+        }
+
+        .requirements-list li {
+            margin-bottom: 12px;
+            padding-left: 30px;
+            position: relative;
+            color: #555;
+        }
+
+        .requirements-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #4caf50;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Таймлайн */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+            margin: 30px 0;
+        }
+
+        .timeline:before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #2196f3;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #2196f3;
+        }
+
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: -34px;
+            top: 25px;
+            width: 12px;
+            height: 12px;
+            background: #2196f3;
+            border-radius: 50%;
+            border: 3px solid white;
+        }
+
+        .timeline-date {
+            font-weight: 600;
+            color: #2196f3;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Форма поиска */
+        .search-container {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+        }
+
+        .search-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #1a237e;
+        }
+
+        .form-select, .form-input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border 0.3s;
+        }
+
+        .form-select:focus, .form-input:focus {
+            border-color: #3949ab;
+            outline: none;
+        }
+
+        .search-btn {
+            background: #2196f3;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 1rem;
+        }
+
+        .search-btn:hover {
+            background: #1976d2;
+            transform: translateY(-2px);
+        }
+
+        /* Калькулятор ЕНТ */
+        .calculator {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            margin: 30px 0;
+        }
+
+        .calculator-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .result-box {
+            background: #e3f2fd;
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .result-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1a237e;
+            margin: 10px 0;
+        }
+
+        /* Кнопки */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: #2196f3;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1976d2;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #2196f3;
+            border: 2px solid #2196f3;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(33, 150, 243, 0.1);
+        }
+
+        /* Стикер важной информации */
+        .important-note {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .important-note-icon {
+            font-size: 1.8rem;
+            color: #ff9800;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 1024px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: static;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .main-nav {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .nav-links {
+                flex-direction: column;
+            }
+
+            .nav-btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero {
+                padding: 40px 0;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .content-section {
+                padding: 25px;
+            }
+        }
+
+
+.site-footer {
+    background: #f5f5f7;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    padding: 36px 10% 28px;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif;
+    color: #6e6e73;
+    font-size: 13px;
+}
+
+.footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-main {
+    display: flex;
+    justify-content: space-between;
+    gap: 60px;
+    margin-bottom: 24px;
+    align-items: flex-start;
+}
+
+/* Левая часть с логотипом */
+.footer-brand {
+    flex: 0 0 320px;
+}
+
+.footer-brand img {
+    width: 200px;
+    height: auto;
+    margin-bottom: 14px;
+    display: block;
+}
+
+.footer-brand p {
+    font-size: 13px;
+    line-height: 1.6;
+    color: #515154;
+    max-width: 280px;
+}
+
+/* Колонки навигации */
+.footer-columns {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    gap: 60px;
+}
+
+.footer-column h4 {
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #86868b;
+    margin-bottom: 10px;
+}
+
+.footer-column a {
+    display: block;
+    font-size: 13px;
+    text-decoration: none;
+    color: #424245;
+    padding: 3px 0;
+    transition: color 0.18s ease, transform 0.18s ease;
+}
+
+.footer-column a:hover {
+    color: #0071e3;
+    transform: translateX(1px);
+}
+
+/* Соцсети */
+.footer-social {
+    margin-top: 14px;
+}
+
+.footer-social span {
+    display: block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #a1a1a6;
+    margin-bottom: 6px;
+}
+
+.footer-social-links {
+    display: flex;
+    gap: 6px;
+}
+
+.footer-social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 28px;
+    height: 28px;
+    border-radius: 999px;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    font-size: 11px;
+    padding: 0 10px;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(8px);
+}
+
+.footer-social-links a:hover {
+    border-color: rgba(0, 0, 0, 0.14);
+    background: #ffffff;
+}
+
+/* Нижняя линия */
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    font-size: 12px;
+    color: #86868b;
+}
+
+.footer-bottom-links {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.footer-bottom a {
+    text-decoration: none;
+    color: #6e6e73;
+    transition: color 0.18s ease;
+}
+
+.footer-bottom a:hover {
+    color: #0071e3;
+}
+
+/* Адаптив */
+@media (max-width: 900px) {
+    .footer-main {
+        flex-direction: column;
+        gap: 28px;
+    }
+
+    .footer-brand {
+        flex: 1;
+    }
+
+    .footer-columns {
+        justify-content: flex-start;
+        gap: 40px;
+    }
+}
+
+@media (max-width: 640px) {
+    .site-footer {
+        padding: 28px 6% 22px;
+    }
+
+    .footer-columns {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+    </style>
 </head>
 <body>
 
 <header class="top-header">
-    <div class="container">
+    <div class="header-container">
+
         <div class="logo-block">
             <img src="https://i.ibb.co.com/rR2cCbV9/eduu.png" alt="Logo">
         </div>
 
-<nav class="menu">
-    <a href="/" data-page="home">Главная</a>
-    <a href="/universities" data-page="universities">Университеты</a>
-    <a href="/compare" data-page="compare">Сравнение</a>
-    <a href="/3d" data-page="tours_3d">3D-Туры</a>
-    <a href="/international" data-page="intl">Международные программы</a>
-    <a href="/about" data-page="about">О сервисе</a>
-</nav>
+        <nav class="menu">
+            <a href="/" class="nav-link" data-page="home">Главная</a>
+            <a href="/universities" class="nav-link" data-page="universities">Университеты</a>
+            <a href="/compare" class="nav-link" data-page="compare">Сравнение</a>
+            <a href="/3d" class="nav-link" data-page="3d">3D Тур</a>
+            <a href="/international" class="nav-link" data-page="international">Международные программы</a>
+            <a href="/about" class="nav-link" data-page="about">Приемная комиссия</a>
+        </nav>
 
-<div class="lang-switch">
-    <button id="lang-btn">RU ▼</button>
-
-    <div class="lang-menu">
-        <div data-lang="ru">Русский</div>
-        <div data-lang="kz">Қазақша</div>
-        <div data-lang="en">English</div>
-    </div>
-</div>
+        <div class="lang-switch">
+            <button id="lang-btn">RU ▼</button>
+            <div class="lang-menu">
+                <div data-lang="ru">Русский</div>
+                <div data-lang="kz">Қазақша</div>
+                <div data-lang="en">English</div>
+            </div>
+        </div>
 
     </div>
 </header>
 
+
+<!-- Hero секция -->
+        <header class="hero">
+            <h1>Прием и поступление 2024</h1>
+            <p>Полное руководство по поступлению в университеты Казахстана. Все этапы, сроки, документы и требования.</p>
+        </header>
+
+        <!-- Поиск программ -->
+        <div class="search-container">
+            <h2 style="margin-bottom: 20px; color: #1a237e;">Найдите свою программу</h2>
+            <div class="search-form">
+                <div class="form-group">
+                    <label for="searchSpecialty">Специальность</label>
+                    <input type="text" id="searchSpecialty" class="form-input" placeholder="Введите специальность...">
+                </div>
+                <div class="form-group">
+                    <label for="searchUniversity">Университет</label>
+                    <select id="searchUniversity" class="form-select">
+                        <option value="">Все университеты</option>
+                        <option value="Назарбаев Университет">Назарбаев Университет</option>
+                        <option value="КБТУ">КБТУ</option>
+                        <option value="ЕНУ">ЕНУ им. Л.Н. Гумилева</option>
+                        <option value="КазНУ">КазНУ им. аль-Фараби</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="searchLevel">Уровень</label>
+                    <select id="searchLevel" class="form-select">
+                        <option value="">Все уровни</option>
+                        <option value="Бакалавриат">Бакалавриат</option>
+                        <option value="Магистратура">Магистратура</option>
+                        <option value="Докторантура">Докторантура</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button class="search-btn" onclick="searchPrograms()">🔍 Найти</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Основной контент -->
+        <div class="main-content">
+            <!-- Боковая навигация -->
+            <aside class="sidebar">
+                <nav class="sidebar-nav">
+                    <a href="#" class="sidebar-link active" onclick="showSection('calendar')">
+                        📅 Календарь приема
+                    </a>
+                    <a href="#" class="sidebar-link" onclick="showSection('requirements')">
+                        📋 Требования
+                    </a>
+                    <a href="#" class="sidebar-link" onclick="showSection('documents')">
+                        📄 Документы
+                    </a>
+                    <a href="#" class="sidebar-link" onclick="showSection('ent')">
+                        🎯 ЕНТ и тестирование
+                    </a>
+                    <a href="#" class="sidebar-link" onclick="showSection('grants')">
+                        💰 Гранты и квоты
+                    </a>
+                    <a href="#" class="sidebar-link" onclick="showSection('international')">
+                        🌍 Иностранным абитуриентам
+                    </a>
+                    <a href="#" class="sidebar-link" onclick="showSection('faq')">
+                        ❓ Частые вопросы
+                    </a>
+                    <a href="#" class="sidebar-link" onclick="showSection('contacts')">
+                        📞 Контакты
+                    </a>
+                </nav>
+
+                <!-- Калькулятор ЕНТ -->
+                <div class="calculator">
+                    <h3 style="margin-bottom: 20px; color: #1a237e;">Калькулятор баллов ЕНТ</h3>
+                    <div class="calculator-grid">
+                        <div class="form-group">
+                            <label>История Казахстана</label>
+                            <input type="number" id="history" class="form-input" min="0" max="25" placeholder="0-25">
+                        </div>
+                        <div class="form-group">
+                            <label>Математическая грамотность</label>
+                            <input type="number" id="math" class="form-input" min="0" max="25" placeholder="0-25">
+                        </div>
+                        <div class="form-group">
+                            <label>Грамотность чтения</label>
+                            <input type="number" id="reading" class="form-input" min="0" max="25" placeholder="0-25">
+                        </div>
+                        <div class="form-group">
+                            <label>Профильные предметы</label>
+                            <input type="number" id="profile" class="form-input" min="0" max="50" placeholder="0-50">
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" onclick="calculateENT()" style="width: 100%; margin-top: 15px;">
+                        📊 Рассчитать балл
+                    </button>
+                    <div id="entResult" class="result-box" style="display: none;">
+                        <h4>Ваш балл ЕНТ</h4>
+                        <div class="result-number" id="entScore">0</div>
+                        <p id="entComment"></p>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Основной контент -->
+            <main>
+                <!-- Календарь приема -->
+                <section id="calendar-section" class="content-section active">
+                    <h2 class="section-title">📅 Календарь приема 2024</h2>
+
+                    <div class="important-note">
+                        <div class="important-note-icon">⚠️</div>
+                        <div>
+                            <strong>Важно!</strong> Сроки могут меняться. Следите за обновлениями на официальных сайтах университетов.
+                        </div>
+                    </div>
+
+                    <h3 class="section-subtitle">Основные этапы приема</h3>
+
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-date">📅 1 января - 15 марта 2024</div>
+                            <h4>Регистрация на ЕНТ</h4>
+                            <p>Подача заявок на участие в Едином национальном тестировании через портал <strong>ent.testcenter.kz</strong></p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">📅 1 апреля - 10 июня 2024</div>
+                            <h4>Проведение ЕНТ</h4>
+                            <p>Основная сессия Единого национального тестирования. Расписание будет опубликовано на сайте МОН РК.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">📅 20 июня - 20 июля 2024</div>
+                            <h4>Прием заявлений</h4>
+                            <p>Подача документов в университеты через портал <strong>epay.edu.kz</strong> или непосредственно в приемные комиссии.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">📅 25 июля - 5 августа 2024</div>
+                            <h4>Конкурс на гранты</h4>
+                            <p>Рассмотрение заявлений и распределение государственных образовательных грантов.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">📅 10-20 августа 2024</div>
+                            <h4>Зачисление</h4>
+                            <p>Опубликование списков зачисленных студентов. Начало подготовительных курсов.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">📅 1 сентября 2024</div>
+                            <h4>Начало учебного года</h4>
+                            <p>Официальное начало учебного процесса 2024-2025.</p>
+                        </div>
+                    </div>
+
+                    <h3 class="section-subtitle">Особые сроки</h3>
+
+                    <div class="cards-grid">
+                        <div class="card">
+                            <div class="card-title">
+                                <span class="card-icon">🎓</span>
+                                Магистратура
+                            </div>
+                            <div class="card-content">
+                                <p><strong>Сроки:</strong> 1 апреля - 31 июля</p>
+                                <p><strong>Вступительные:</strong> Собеседование + экзамены по профилю</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-title">
+                                <span class="card-icon">🌍</span>
+                                Иностранные студенты
+                            </div>
+                            <div class="card-content">
+                                <p><strong>Сроки:</strong> 1 февраля - 1 июня</p>
+                                <p><strong>Документы:</strong> Нострификация + языковой сертификат</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-title">
+                                <span class="card-icon">💼</span>
+                                Заочное обучение
+                            </div>
+                            <div class="card-content">
+                                <p><strong>Сроки:</strong> 15 июля - 15 сентября</p>
+                                <p><strong>Особенности:</strong> Вступительные экзамены в университете</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Требования -->
+                <section id="requirements-section" class="content-section">
+                    <h2 class="section-title">📋 Требования для поступления</h2>
+
+                    <h3 class="section-subtitle">Общие требования для бакалавриата</h3>
+
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th>Требование</th>
+                                <th>Описание</th>
+                                <th>Документы</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>📚 Аттестат</td>
+                                <td>Среднее общее образование (11 классов) или среднее специальное образование</td>
+                                <td>Оригинал аттестата или диплома</td>
+                            </tr>
+                            <tr>
+                                <td>🎯 ЕНТ</td>
+                                <td>Минимальный проходной балл: 65 из 140 (для грантов - от 100 баллов)</td>
+                                <td>Сертификат ЕНТ</td>
+                            </tr>
+                            <tr>
+                                <td>🏥 Медицинская справка</td>
+                                <td>Форма 086-У, действительна 6 месяцев с даты выдачи</td>
+                                <td>Оригинал справки</td>
+                            </tr>
+                            <tr>
+                                <td>📸 Фотографии</td>
+                                <td>6 цветных фотографий 3×4 см на матовой бумаге</td>
+                                <td>Фото на белом фоне</td>
+                            </tr>
+                            <tr>
+                                <td>📝 Заявление</td>
+                                <td>Заполненное заявление по форме университета</td>
+                                <td>Заявление + копия удостоверения личности</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3 class="section-subtitle">Требования по специальностям</h3>
+
+                    <div class="cards-grid">
+                        <div class="card">
+                            <div class="card-title">
+                                <span class="card-icon">💻</span>
+                                IT специальности
+                            </div>
+                            <div class="card-content">
+                                <ul class="requirements-list">
+                                    <li>ЕНТ: математика + физика/информатика</li>
+                                    <li>Минимальный балл: 70+</li>
+                                    <li>Дополнительно: портфолио проектов</li>
+                                    <li>Язык: английский B1+ (для некоторых программ)</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-title">
+                                <span class="card-icon">⚕️</span>
+                                Медицинские специальности
+                            </div>
+                            <div class="card-content">
+                                <ul class="requirements-list">
+                                    <li>ЕНТ: биология + химия</li>
+                                    <li>Минимальный балл: 75+</li>
+                                    <li>Дополнительно: медосмотр углубленный</li>
+                                    <li>Тест: психологическое тестирование</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-title">
+                                <span class="card-icon">🏗️</span>
+                                Технические специальности
+                            </div>
+                            <div class="card-content">
+                                <ul class="requirements-list">
+                                    <li>ЕНТ: математика + физика</li>
+                                    <li>Минимальный балл: 65+</li>
+                                    <li>Дополнительно: черчение (для некоторых)</li>
+                                    <li>Практика: рекомендации с производства</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Документы -->
+                <section id="documents-section" class="content-section">
+                    <h2 class="section-title">📄 Необходимые документы</h2>
+
+                    <div class="important-note">
+                        <div class="important-note-icon">📋</div>
+                        <div>
+                            <strong>Памятка:</strong> Все копии документов должны быть заверены нотариально или в самом университете при подаче оригиналов.
+                        </div>
+                    </div>
+
+                    <h3 class="section-subtitle">Основной пакет документов</h3>
+
+                    <div class="cards-grid">
+                        <div class="card">
+                            <div class="card-title">
+                                <span class="card-icon">📑</span>
+                                Обязательные документы
+                            </div>
+                            <div class="card-content">
+                                <ul class="requirements-list">
+                                    <li>Заявление на поступление (форма университета)</li>
+                                    <li>Оригинал аттестата/диплома с приложением</li>
+                                    <li>Сертификат ЕНТ (оригинал)</li>
+                                    <li>Медицинская справка 086-У</li>
+                                    <li>6 фото 3×4 см</li>
+                                    <li>Копия удостоверения личности</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-title">
+                                <span class="card-icon">📝</span>
+                                Дополнительные документы
+                            </div>
+                            <div class="card-content">
+                                <ul class="requirements-list">
+                                    <li>Документы о льготах (при наличии)</li>
+                                    <li>Сертификаты олимпиад, конкурсов</li>
+                                    <li>Языковые сертификаты (IELTS, TOEFL)</li>
+                                    <li>Портфолио (для творческих специальностей)</li>
+                                    <li>Рекомендательные письма (для магистратуры)</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-title">
+                                <span class="card-icon">🌍</span>
+                                Для иностранных граждан
+                            </div>
+                            <div class="card-content">
+                                <ul class="requirements-list">
+                                    <li>Нотариально заверенный перевод паспорта</li>
+                                    <li>Апостиль диплома/аттестата</li>
+                                    <li>Нострификация документов об образовании</li>
+                                    <li>Медицинская страховка</li>
+                                    <li>Справка об отсутствии ВИЧ</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="section-subtitle">Процесс подачи документов</h3>
+
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-date">📌 Шаг 1</div>
+                            <h4>Подготовка документов</h4>
+                            <p>Собрать все необходимые оригиналы и сделать нотариально заверенные копии.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">📌 Шаг 2</div>
+                            <h4>Электронная регистрация</h4>
+                            <p>Зарегистрироваться на портале <strong>epay.edu.kz</strong> и заполнить заявление.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">📌 Шаг 3</div>
+                            <h4>Оплата</h4>
+                            <p>Оплатить регистрационный взнос (около 2 292 тенге) через Kaspi.kz или другие системы.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">📌 Шаг 4</div>
+                            <h4>Подача оригиналов</h4>
+                            <p>Лично подать оригиналы документов в приемную комиссию выбранного университета.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ЕНТ и тестирование -->
+                <section id="ent-section" class="content-section">
+                    <h2 class="section-title">🎯 ЕНТ и вступительные испытания</h2>
+
+                    <div class="important-note">
+                        <div class="important-note-icon">🎓</div>
+                        <div>
+                            <strong>Совет:</strong> Начните подготовку к ЕНТ за год до поступления. Используйте официальные учебники и пробные тесты.
+                        </div>
+                    </div>
+
+                    <h3 class="section-subtitle">Структура ЕНТ 2024</h3>
+
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th>Предмет</th>
+                                <th>Количество вопросов</th>
+                                <th>Максимальный балл</th>
+                                <th>Время</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>История Казахстана</td>
+                                <td>15 вопросов</td>
+                                <td>25 баллов</td>
+                                <td>90 минут</td>
+                            </tr>
+                            <tr>
+                                <td>Математическая грамотность</td>
+                                <td>15 вопросов</td>
+                                <td>25 баллов</td>
+                                <td>90 минут</td>
+                            </tr>
+                            <tr>
+                                <td>Грамотность чтения</td>
+                                <td>15 вопросов</td>
+                                <td>25 баллов</td>
+                                <td>90 минут</td>
+                            </tr>
+                            <tr>
+                                <td>Профильные предметы (2)</td>
+                                <td>30 вопросов (15+15)</td>
+                                <td>50 баллов</td>
+                                <td>120 минут</td>
+                            </tr>
+                            <tr style="background: #f0f7ff;">
+                                <td><strong>Итого</strong></td>
+                                <td><strong>75 вопросов</strong></td>
+                                <td><strong>140 баллов</strong></td>
+                                <td><strong>240 минут</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3 class="section-subtitle">Профильные предметы по направлениям</h3>
+
+                    <div class="cards-grid">
+                        <div class="card">
+                            <div class="card-title">
+                                <span class="card-icon">🔬</span>
+                                Естественные науки
+                            </div>
+                            <div class="card-content">
+                                <p><strong>Предметы:</strong> Биология + Химия</p>
+                                <p><strong>Специальности:</strong> Медицина, биология, химия, экология</p>
+                                <p><strong>Проходной балл:</strong> 65-85+</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-title">
+                                <span class="card-icon">💻</span>
+                                Технические науки
+                            </div>
+                            <div class="card-content">
+                                <p><strong>Предметы:</strong> Математика + Физика</p>
+                                <p><strong>Специальности:</strong> Инженерия, IT, строительство, транспорт</p>
+                                <p><strong>Проходной балл:</strong> 60-80+</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-title">
+                                <span class="card-icon">📚</span>
+                                Гуманитарные науки
+                            </div>
+                            <div class="card-content">
+                                <p><strong>Предметы:</strong> Всемирная история + География</p>
+                                <p><strong>Специальности:</strong> История, педагогика, журналистика, туризм</p>
+                                <p><strong>Проходной балл:</strong> 55-75+</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Гранты и квоты -->
+                <section id="grants-section" class="content-section">
+                    <h2 class="section-title">💰 Гранты, квоты и стипендии</h2>
+
+                    <h3 class="section-subtitle">Государственные образовательные гранты 2024</h3>
+
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th>Категория</th>
+                                <th>Количество грантов</th>
+                                <th>Требования</th>
+                                <th>Покрытие</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Общий конкурс</td>
+                                <td>55,000</td>
+                                <td>ЕНТ от 65 баллов</td>
+                                <td>Обучение + стипендия</td>
+                            </tr>
+                            <tr>
+                                <td>Сельская квота</td>
+                                <td>10,000</td>
+                                <td>Выпускники сельских школ</td>
+                                <td>Полное покрытие</td>
+                            </tr>
+                            <tr>
+                                <td>Для оралманов</td>
+                                <td>500</td>
+                                <td>Статус оралмана</td>
+                                <td>Обучение + проживание</td>
+                            </tr>
+                            <tr>
+                                <td>Инвалиды I, II групп</td>
+                                <td>300</td>
+                                <td>Медицинское заключение</td>
+                                <td>Полный пакет</td>
+                            </tr>
+                            <tr>
+                                <td>Дети-сироты</td>
+                                <td>200</td>
+                                <td>Документы опеки</td>
+                                <td>Обучение + содержание</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3 class="section-subtitle">Приоритетные специальности 2024</h3>
+
+                    <div class="cards-grid">
+                        <div class="card">
+                            <div class="card-title">
+                                <span class="card-icon">💻</span>
+                                IT и технологии
+                            </div>
+                            <div class="card-content">
+                                <ul class="requirements-list">
+                                    <li>Компьютерные науки</li>
+                                    <li>Кибербезопасность</li>
+                                    <li>Data Science</li>
+                                    <li>Разработка ПО</li>
+                                    <li>Искусственный интеллект</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-title">
+                                <span class="card-icon">⚕️</span>
+                                Медицина и здоровье
+                            </div>
+                            <div class="card-content">
+                                <ul class="requirements-list">
+                                    <li>Общая медицина</li>
+                                    <li>Стоматология</li>
+                                    <li>Фармация</li>
+                                    <li>Сестринское дело</li>
+                                    <li>Общественное здоровье</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-title">
+                                <span class="card-icon">🏗️</span>
+                                Инженерия и промышленность
+                            </div>
+                            <div class="card-content">
+                                <ul class="requirements-list">
+                                    <li>Нефтегазовое дело</li>
+                                    <li>Горное дело</li>
+                                    <li>Энергетика</li>
+                                    <li>Машиностроение</li>
+                                    <li>Строительство</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- FAQ -->
+                <section id="faq-section" class="content-section">
+                    <h2 class="section-title">❓ Часто задаваемые вопросы</h2>
+
+                    <div class="cards-grid">
+                        <div class="card">
+                            <div class="card-title">
+                                <span class="card-icon">❓</span>
+                                Когда начинается прием документов?
+                            </div>
+                            <div class="card-content">
+                                <p>Прием документов на бакалавриат начинается <strong>20 июня 2024 года</strong> после объявления результатов ЕНТ. Для магистратуры - с 1 апреля.</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-title">
+                                <span class="card-icon">❓</span>
+                                Сколько стоит обучение на платной основе?
+                            </div>
+                            <div class="card-content">
+                                <p>Стоимость зависит от университета и специальности. В среднем от <strong>500,000 до 2,000,000 тенге в год</strong>. Точные цены на сайте университета.</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-title">
+                                <span class="card-icon">❓</span>
+                                Можно ли подать документы в несколько вузов?
+                            </div>
+                            <div class="card-content">
+                                <p>Да, можно подать документы в <strong>до 4 университетов</strong> и выбрать до 4 специальностей в каждом. Приоритет указывается в заявлении.</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-title">
+                                <span class="card-icon">❓</span>
+                                Что делать, если не прошел на грант?
+                            </div>
+                            <div class="card-content">
+                                <p>Можно поступить на платное отделение или подать заявку на <strong>кредит на образование</strong> через банки-партнеры (до 95% покрытия).</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-title">
+                                <span class="card-icon">❓</span>
+                                Как проходит зачисление?
+                            </div>
+                            <div class="card-content">
+                                <p>После конкурса грантов публикуются списки зачисленных. Нужно в течение <strong>3 рабочих дней</strong> принести оригиналы документов в университет.</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-title">
+                                <span class="card-icon">❓</span>
+                                Можно ли перевестись с платного на грант?
+                            </div>
+                            <div class="card-content">
+                                <p>Да, после первого курса при наличии хорошей успеваемости (GPA 3.0+) можно участвовать в конкурсе на <strong>освободившиеся гранты</strong>.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Контакты -->
+                <section id="contacts-section" class="content-section">
+                    <h2 class="section-title">📞 Контакты приемных комиссий</h2>
+
+                    <div class="cards-grid">
+                        <div class="card">
+                            <div class="card-title">
+                                <span class="card-icon">🏛️</span>
+                                Министерство науки и высшего образования РК
+                            </div>
+                            <div class="card-content">
+                                <p><strong>Телефон:</strong> +7 (7172) 74-24-15</p>
+                                <p><strong>Email:</strong> info@edu.gov.kz</p>
+                                <p><strong>Сайт:</strong> <a href="https://edu.gov.kz">edu.gov.kz</a></p>
+                                <p><strong>Адрес:</strong> г. Астана, ул. Мангилик Ел, 8</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-title">
+                                <span class="card-icon">🎓</span>
+                                Национальный центр тестирования
+                            </div>
+                            <div class="card-content">
+                                <p><strong>Телефон:</strong> +7 (7172) 57-28-90</p>
+                                <p><strong>ЕНТ горячая линия:</strong> 1414 (бесплатно)</p>
+                                <p><strong>Сайт:</strong> <a href="https://ent.testcenter.kz">ent.testcenter.kz</a></p>
+                                <p><strong>Для вопросов по ЕНТ</strong></p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-title">
+                                <span class="card-icon">💼</span>
+                                Центр обслуживания студентов
+                            </div>
+                            <div class="card-content">
+                                <p><strong>Телефон:</strong> +7 (7172) 55-03-64</p>
+                                <p><strong>Email:</strong> cos@edu.kz</p>
+                                <p><strong>Сайт:</strong> <a href="https://epay.edu.kz">epay.edu.kz</a></p>
+                                <p><strong>Электронная подача документов</strong></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="section-subtitle">Социальные сети для абитуриентов</h3>
+
+                    <div style="display: flex; gap: 20px; margin-top: 20px; flex-wrap: wrap;">
+                        <button class="btn btn-secondary">
+                            📘 Facebook
+                        </button>
+                        <button class="btn btn-secondary">
+                            📷 Instagram
+                        </button>
+                        <button class="btn btn-secondary">
+                            💬 Telegram
+                        </button>
+                        <button class="btn btn-secondary">
+                            📹 YouTube
+                        </button>
+                        <button class="btn btn-secondary">
+                            💼 ВКонтакте
+                        </button>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+<footer class="site-footer">
+    <div class="footer-inner">
+        <div class="footer-main">
+            <div class="footer-brand">
+                <img src="https://i.ibb.co.com/rR2cCbV9/eduu.png" alt="Edu Navigator KZ">
+                <p>
+                    Помогаем абитуриентам спокойно и осознанно выбрать университет,
+                    не теряясь в десятках вкладок и сложных сайтах.
+                </p>
+            </div>
+
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <h4>Навигация</h4>
+                    <a href="/">Главная</a>
+                    <a href="/universities">Университеты</a>
+                    <a href="/compare">Сравнение</a>
+                    <a href="/3d">3D-тур</a>
+                    <a href="/international">Международные программы</a>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Абитуриенту</h4>
+                    <a href="/about">Приемная комиссия</a>
+                    <a href="#">Частые вопросы</a>
+                    <a href="#">Гайд по поступлению</a>
+                    <a href="#">Советы по выбору вуза</a>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Контакты</h4>
+                    <a href="mailto:support@edunavigator.kz">support@edunavigator.kz</a>
+                    <a href="#">Поддержка в Telegram</a>
+
+                    <div class="footer-social">
+                        <span>Мы в соцсетях</span>
+                        <div class="footer-social-links">
+                            <a href="#">TG</a>
+                            <a href="#">VK</a>
+                            <a href="#">IG</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>© 2025 Edu Navigator KZ</span>
+            <div class="footer-bottom-links">
+                <a href="#">Политика конфиденциальности</a>
+                <span>·</span>
+                <a href="#">Пользовательское соглашение</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script>
+        // ===================== ОСНОВНЫЕ ФУНКЦИИ =====================
+
+        // Показать секцию
+        function showSection(sectionId) {
+            // Скрыть все секции
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Скрыть все ссылки в сайдбаре
+            document.querySelectorAll('.sidebar-link').forEach(link => {
+                link.classList.remove('active');
+            });
+
+            // Показать выбранную секцию
+            const section = document.getElementById(`${sectionId}-section`);
+            if (section) {
+                section.classList.add('active');
+            }
+
+            // Активировать ссылку в сайдбаре
+            const activeLink = document.querySelector(`.sidebar-link[onclick*="${sectionId}"]`);
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+        }
+
+        // Поиск программ
+        function searchPrograms() {
+            const specialty = document.getElementById('searchSpecialty').value;
+            const university = document.getElementById('searchUniversity').value;
+            const level = document.getElementById('searchLevel').value;
+
+            alert(`Поиск программ:\nСпециальность: ${specialty || "Все"}\nУниверситет: ${university || "Все"}\nУровень: ${level || "Все"}`);
+
+            // Здесь можно добавить реальный поиск
+            showSection('programs');
+        }
+
+        // Калькулятор ЕНТ
+        function calculateENT() {
+            const history = parseInt(document.getElementById('history').value) || 0;
+            const math = parseInt(document.getElementById('math').value) || 0;
+            const reading = parseInt(document.getElementById('reading').value) || 0;
+            const profile = parseInt(document.getElementById('profile').value) || 0;
+
+            // Проверка ввода
+            if (history > 25 || math > 25 || reading > 25 || profile > 50) {
+                alert('Пожалуйста, введите корректные значения!');
+                return;
+            }
+
+            const total = history + math + reading + profile;
+            const resultBox = document.getElementById('entResult');
+            const scoreElement = document.getElementById('entScore');
+            const commentElement = document.getElementById('entComment');
+
+            scoreElement.textContent = total;
+
+            // Комментарий в зависимости от балла
+            let comment = '';
+            if (total >= 120) {
+                comment = 'Отличный результат! Высокие шансы на получение гранта в престижных университетах.';
+                scoreElement.style.color = '#4caf50';
+            } else if (total >= 100) {
+                comment = 'Хороший результат! Хорошие шансы на получение гранта.';
+                scoreElement.style.color = '#8bc34a';
+            } else if (total >= 80) {
+                comment = 'Средний результат. Рассмотрите региональные университеты.';
+                scoreElement.style.color = '#ff9800';
+            } else if (total >= 65) {
+                comment = 'Минимальный проходной балл. Рекомендуем улучшить результат.';
+                scoreElement.style.color = '#ff5722';
+            } else {
+                comment = 'Ниже минимального балла. Рекомендуем пересдать ЕНТ.';
+                scoreElement.style.color = '#f44336';
+            }
+
+            commentElement.textContent = comment;
+            resultBox.style.display = 'block';
+        }
+
+        // Инициализация при загрузке
+        document.addEventListener('DOMContentLoaded', function() {
+            // Установить текущий год в заголовках
+            const currentYear = new Date().getFullYear();
+            document.querySelectorAll('.hero h1').forEach(title => {
+                title.textContent = title.textContent.replace('2024', currentYear);
+            });
+
+            // Инициализация календаря
+            initializeCalendar();
+
+            // Добавить обработчики для всех ссылок сайдбара
+            document.querySelectorAll('.sidebar-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                });
+            });
+
+            console.log('Страница приема и поступления загружена!');
+        });
+
+        // Инициализация календаря (пример)
+        function initializeCalendar() {
+            // Здесь можно добавить интерактивный календарь
+            console.log('Календарь инициализирован');
+        }
+
+        // Сохранить данные формы (пример)
+        function saveApplication() {
+            const formData = {
+                name: document.getElementById('applicantName').value,
+                email: document.getElementById('applicantEmail').value,
+                university: document.getElementById('selectedUniversity').value,
+                specialty: document.getElementById('selectedSpecialty').value
+            };
+
+            localStorage.setItem('applicationData', JSON.stringify(formData));
+            alert('Заявка сохранена! Вы можете продолжить позже.');
+        }
+
+        // Загрузить сохраненную заявку
+        function loadApplication() {
+            const savedData = localStorage.getItem('applicationData');
+            if (savedData) {
+                const data = JSON.parse(savedData);
+                // Заполнить поля формы
+                document.getElementById('applicantName').value = data.name || '';
+                document.getElementById('applicantEmail').value = data.email || '';
+                document.getElementById('selectedUniversity').value = data.university || '';
+                document.getElementById('selectedSpecialty').value = data.specialty || '';
+                alert('Предыдущая заявка загружена!');
+            }
+        }
+
+        // Проверка сроков подачи
+        function checkDeadlines() {
+            const today = new Date();
+            const deadlines = {
+                'Регистрация на ЕНТ': new Date('2024-03-15'),
+                'Подача документов': new Date('2024-07-20'),
+                'Зачисление': new Date('2024-08-20')
+            };
+
+            let message = 'Ближайшие дедлайны:\n\n';
+            for (const [deadline, date] of Object.entries(deadlines)) {
+                const daysLeft = Math.ceil((date - today) / (1000 * 60 * 60 * 24));
+                if (daysLeft > 0) {
+                    message += `${deadline}: через ${daysLeft} дней\n`;
+                } else if (daysLeft === 0) {
+                    message += `${deadline}: СЕГОДНЯ!\n`;
+                } else {
+                    message += `${deadline}: ПРОШЕЛ\n`;
+                }
+            }
+
+            alert(message);
+        }
+
+        // Печать страницы
+        function printPage() {
+            window.print();
+        }
+
+        // Поделиться в соцсетях
+        function sharePage(network) {
+            const url = window.location.href;
+            const title = document.title;
+            const text = 'Прием и поступление в университеты Казахстана 2024';
+
+            let shareUrl = '';
+            switch(network) {
+                case 'facebook':
+                    shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+                    break;
+                case 'twitter':
+                    shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+                    break;
+                case 'telegram':
+                    shareUrl = `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`;
+                    break;
+                case 'vk':
+                    shareUrl = `https://vk.com/share.php?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}`;
+                    break;
+            }
+
+            if (shareUrl) {
+                window.open(shareUrl, '_blank', 'width=600,height=400');
+            }
+        }
+    </script>
     <script src="../static/script.js"></script>
 </body>
 </html>

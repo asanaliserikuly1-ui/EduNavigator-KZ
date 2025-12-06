@@ -1,0 +1,164 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>{{ tour_title }}</title>
+
+  <!-- Pannellum -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum/build/pannellum.css" />
+  <script src="https://cdn.jsdelivr.net/npm/pannellum/build/pannellum.js"></script>
+
+  <style>
+  /* ПАНОРАМА */
+  #panorama {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 1;
+
+  }
+
+  /* АВАТАР */
+  #assistantAvatar {
+      position: absolute;
+      left: 24px;
+      bottom: 36px;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+  }
+#assistantAvatar img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 6px solid rgba(255,255,255,0.95);
+    box-shadow: 0 14px 32px rgba(0,0,0,0.35);
+    transition: 0.3s ease;
+}
+
+
+
+  /* ОБЛАКО РЕЧИ */
+  #assistantSpeech {
+      position: absolute;
+      left: 170px;
+      bottom: 140px;
+      max-width: 280px;
+      background: rgba(255,255,255,0.95);
+      padding: 12px 16px;
+      border-radius: 14px;
+      font-size: 14px;
+      line-height: 1.35em;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.25);
+      backdrop-filter: blur(8px);
+      display: none;
+      opacity: 0;
+      transition: opacity .35s;
+      z-index: 9999;
+  }
+
+  /* ЧАТ */
+  #chatPanel {
+      position: absolute;
+      right: 16px;
+      top: 16px;
+      width: 360px;
+      height: 75vh;
+      background: rgba(255,255,255,0.82);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+      display:flex;
+      flex-direction:column;
+      overflow: hidden;
+      z-index:9999;
+  }
+
+  #chatHeader {
+      padding: 14px;
+      background: rgba(245,245,245,0.85);
+      font-weight: 700;
+      text-align: center;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+
+  #chatMessages {
+      flex: 1;
+      padding: 16px;
+      overflow-y: auto;
+  }
+
+  .msg.ai {
+      background: #eef4ff;
+      padding: 10px 12px;
+      margin: 6px 0;
+      border-radius: 12px;
+      font-size: 14px;
+  }
+
+  .msg.user {
+      background: #e5ffe5;
+      padding: 10px 12px;
+      margin: 6px 0;
+      border-radius: 12px;
+      align-self: flex-end;
+      font-size: 14px;
+  }
+
+  #chatInput {
+      padding: 12px;
+      display:flex;
+      gap: 8px;
+      border-top: 1px solid rgba(0,0,0,0.1);
+  }
+  #chatInput input {
+      flex: 1;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+  }
+  #chatInput button {
+      padding: 10px 16px;
+      border-radius: 10px;
+      background: #1565d8;
+      color: #fff;
+      border: none;
+  }
+  </style>
+</head>
+
+<body>
+
+<div id="panorama"></div>
+
+<!-- АВАТАР -->
+<div id="assistantAvatar">
+  <img id="aiAvatarImg" src="/static/ai/hello.png">
+</div>
+
+<!-- ОБЛАКО РЕЧИ -->
+<div id="assistantSpeech">
+  <div id="assistantSpeechText"></div>
+</div>
+
+<!-- ЧАТ -->
+<div id="chatPanel">
+  <div id="chatHeader">{{ tour_title }} — ИИ-гид</div>
+  <div id="chatMessages"></div>
+  <div id="chatInput">
+    <input id="chatText" placeholder="Напишите вопрос ассистенту...">
+    <button id="sendBtn">Отправить</button>
+  </div>
+</div>
+
+<script>
+const TOUR_ID = "{{ tour_id }}";
+</script>
+<script src="/static/tour/tour_with_ai.js"></script>
+
+</body>
+</html>
