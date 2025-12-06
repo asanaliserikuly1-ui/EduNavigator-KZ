@@ -13,12 +13,19 @@ body{
     z-index: 1000;
 }
 
+/* --- FLEX layout --- */
 .container {
     max-width: 1200px;
     margin: auto;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center; /* центрируем */
+    position: relative;       /* нужно для абсолютного позиционирования */
+}
+
+.logo-block {
+    position: absolute;
+    left: 0; /* логотип слева */
 }
 
 .logo-block img {
@@ -28,19 +35,14 @@ body{
     display: block;
 }
 
-.menu a {
-    font-family: "Oswald", sans-serif;
-    position: relative;
-    text-decoration: none;
-    margin: 0 12px;
-    color: #1f2933;
-    font-size: 14px;
-    padding: 12px 4px;
-    transition: color 0.2s ease;
+/* Центрированное меню */
+.menu {
+    display: flex;
+    gap: 12px;
 }
 
-
 .menu a {
+    font-family: "Oswald", sans-serif;
     position: relative;
     text-decoration: none;
     padding: 10px 4px;
@@ -64,17 +66,12 @@ body{
     left: 0;
     bottom: -4px;
     border-radius: 6px;
-    transition: width 0.2s ease;
 }
 
-.menu {
-    margin-left: auto;
-    display: flex;
-    gap: 6px;
-}
-
+/* Переключатель языка справа */
 .lang-switch {
-    position: relative;
+    position: absolute;
+    right: 0;
 }
 
 .lang-switch button {
@@ -121,3 +118,193 @@ body{
 
 
 
+
+
+
+
+
+
+
+
+
+
+.site-footer {
+    background: #f5f5f7;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    padding: 36px 10% 28px;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif;
+    color: #6e6e73;
+    font-size: 13px;
+}
+
+.footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-main {
+    display: flex;
+    justify-content: space-between;
+    gap: 60px;
+    margin-bottom: 24px;
+    align-items: flex-start;
+}
+
+/* Левая часть с логотипом */
+.footer-brand {
+    flex: 0 0 320px;
+}
+
+.footer-brand img {
+    width: 200px;
+    height: auto;
+    margin-bottom: 14px;
+    display: block;
+}
+
+.footer-brand p {
+    font-size: 13px;
+    line-height: 1.6;
+    color: #515154;
+    max-width: 280px;
+}
+
+/* Колонки навигации */
+.footer-columns {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    gap: 60px;
+}
+
+.footer-column h4 {
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #86868b;
+    margin-bottom: 10px;
+}
+
+.footer-column a {
+    display: block;
+    font-size: 13px;
+    text-decoration: none;
+    color: #424245;
+    padding: 3px 0;
+    transition: color 0.18s ease, transform 0.18s ease;
+}
+
+.footer-column a:hover {
+    color: #0071e3;
+    transform: translateX(1px);
+}
+
+/* Соцсети */
+.footer-social {
+    margin-top: 14px;
+}
+
+.footer-social span {
+    display: block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #a1a1a6;
+    margin-bottom: 6px;
+}
+
+.footer-social-links {
+    display: flex;
+    gap: 6px;
+}
+
+.footer-social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 28px;
+    height: 28px;
+    border-radius: 999px;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    font-size: 11px;
+    padding: 0 10px;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(8px);
+}
+
+.footer-social-links a:hover {
+    border-color: rgba(0, 0, 0, 0.14);
+    background: #ffffff;
+}
+
+/* Нижняя линия */
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    font-size: 12px;
+    color: #86868b;
+}
+
+.footer-bottom-links {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.footer-bottom a {
+    text-decoration: none;
+    color: #6e6e73;
+    transition: color 0.18s ease;
+}
+
+.footer-bottom a:hover {
+    color: #0071e3;
+}
+
+/* Адаптив */
+@media (max-width: 900px) {
+    .footer-main {
+        flex-direction: column;
+        gap: 28px;
+    }
+
+    .footer-brand {
+        flex: 1;
+    }
+
+    .footer-columns {
+        justify-content: flex-start;
+        gap: 40px;
+    }
+}
+
+@media (max-width: 640px) {
+    .site-footer {
+        padding: 28px 6% 22px;
+    }
+
+    .footer-columns {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+
+
+
+
+
+
+
+
+html,body{height:100%;margin:0}
+#panorama{width:100%;height:100vh}
