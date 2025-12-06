@@ -1,0 +1,46 @@
+{
+  "title": "SDU Virtual Tour",
+  "startScene": "entrance",
+  "scenes": {
+    "entrance": {
+      "title": "Главный вход SDU",
+      "image": "sdu_entrance.jpg",
+      "hotspots": [
+        { "to": "hall", "text": "Перейти в холл" },
+        { "to": "courtyard", "text": "Во двор" }
+      ]
+    },
+    "hall": {
+      "title": "Холл SDU",
+      "image": "sdu_hall.jpg",
+      "hotspots": [
+        { "to": "entrance", "text": "К входу" },
+        { "to": "corridor", "text": "В коридор" },
+        { "to": "lab", "text": "IT лаборатория" }
+      ]
+    },
+    "corridor": {
+      "title": "Коридор SDU",
+      "image": "sdu_corridor.jpg",
+      "hotspots": [
+        { "to": "hall", "text": "К холлу" },
+        { "to": "lab", "text": "В лабораторию" }
+      ]
+    },
+    "lab": {
+      "title": "IT лаборатория SDU",
+      "image": "sdu_lab.jpg",
+      "hotspots": [
+        { "to": "hall", "text": "К холлу" },
+        { "to": "corridor", "text": "К коридору" }
+      ]
+    },
+    "courtyard": {
+      "title": "Двор SDU",
+      "image": "sdu_courtyard.jpg",
+      "hotspots": [
+        { "to": "entrance", "text": "К главному входу" }
+      ]
+    }
+  }
+}

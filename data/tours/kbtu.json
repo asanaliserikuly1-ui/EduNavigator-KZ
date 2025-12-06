@@ -1,0 +1,11 @@
+{
+  "title": "KBTU Virtual Tour",
+  "startScene": "entrance",
+  "scenes": {
+    "entrance": { "title": "Главный вход KBTU", "image": "kbtu_entrance.jpg", "hotspots":[{ "to":"hall","text":"Перейти в холл"}]},
+    "hall": { "title": "Холл KBTU", "image": "kbtu_hall.jpg", "hotspots":[{ "to":"entrance","text":"К входу"},{ "to":"corridor","text":"Перейти в коридор"},{ "to":"lab","text":"Компьютерная лаборатория"}]},
+    "corridor": { "title": "Коридор KBTU", "image": "kbtu_corridor.jpg", "hotspots":[{ "to":"hall","text":"К холлу"},{ "to":"lab","text":"В лабораторию"}]},
+    "lab": { "title": "Лаборатория KBTU", "image": "kbtu_lab.jpg", "hotspots":[{ "to":"corridor","text":"Коридор"},{ "to":"hall","text":"К холлу"}]},
+    "courtyard": { "title": "Двор KBTU", "image": "kbtu_courtyard.jpg", "hotspots":[{ "to":"entrance","text":"К главному входу"}]}
+  }
+}

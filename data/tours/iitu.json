@@ -1,0 +1,45 @@
+{
+  "title": "IITU Virtual Tour",
+  "startScene": "entrance",
+  "scenes": {
+    "entrance": {
+      "title": "Главный вход IITU",
+      "image": "iitu_entrance.jpg",
+      "hotspots": [
+        { "to": "hall", "text": "Перейти в холл" },
+        { "to": "courtyard", "text": "Двор" }
+      ]
+    },
+    "hall": {
+      "title": "Холл IITU",
+      "image": "iitu_hall.jpg",
+      "hotspots": [
+        { "to": "entrance", "text": "К входу" },
+        { "to": "corridor", "text": "Коридор" },
+        { "to": "lab", "text": "IT лаборатория" }
+      ]
+    },
+    "corridor": {
+      "title": "Коридор IITU",
+      "image": "iitu_corridor.jpg",
+      "hotspots": [
+        { "to": "hall", "text": "К холлу" },
+        { "to": "lab", "text": "К лаборатории" }
+      ]
+    },
+    "lab": {
+      "title": "IT лаборатория IITU",
+      "image": "iitu_lab.jpg",
+      "hotspots": [
+        { "to": "corridor", "text": "К коридору" }
+      ]
+    },
+    "courtyard": {
+      "title": "Двор IITU",
+      "image": "iitu_courtyard.jpg",
+      "hotspots": [
+        { "to": "entrance", "text": "К входу" }
+      ]
+    }
+  }
+}

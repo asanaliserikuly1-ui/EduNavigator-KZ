@@ -1,0 +1,44 @@
+{
+  "title": "AITU Virtual Tour",
+  "startScene": "entrance",
+  "scenes": {
+    "entrance": {
+      "title": "Главный вход AITU",
+      "image": "aitu_entrance.jpg",
+      "hotspots": [
+        { "to": "hall", "text": "Перейти в актовый зал" },
+        { "to": "courtyard", "text": "Спорт зал" }
+      ]
+    },
+    "hall": {
+      "title": "Актовый зал AITU",
+      "image": "aitu_hall.jpg",
+      "hotspots": [
+        { "to": "entrance", "text": "К входу" },
+        { "to": "lab", "text": "IT лаборатория" }
+      ]
+    },
+    "lab": {
+      "title": "IT лаборатория AITU",
+      "image": "aitu_lab.jpg",
+      "hotspots": [
+        { "to": "hall", "text": "К актовому залу" }
+      ]
+    },
+    "corridor": {
+      "title": "Коридор AITU",
+      "image": "aitu_corridor.jpg",
+      "hotspots": [
+        { "to": "hall", "text": "К холлу" },
+        { "to": "lab", "text": "К лаборатории" }
+      ]
+    },
+    "courtyard": {
+      "title": "Спорт зал AITU",
+      "image": "aitu_courtyard.jpg",
+      "hotspots": [
+        { "to": "entrance", "text": "К входу" }
+      ]
+    }
+  }
+}
